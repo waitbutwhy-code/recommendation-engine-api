@@ -1,0 +1,19 @@
+{
+  "name": "syncspot-recommendations",
+  "version": "1.0.0",
+  "description": "generate recommendations for brands",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SyncSpot/syncspot-recommendations.git"
+  },
+  "author": "mjdude",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SyncSpot/syncspot-recommendations/issues"
+  },
+  "homepage": "https://github.com/SyncSpot/syncspot-recommendations#readme"
+}
