@@ -9,3 +9,10 @@ Design :
 4. Have a similars class that finds similar promotions
 5. Have a suggestions class that suggests promotions
 6. Expose functions to a front end interface 
+
+Plan:
+
+1. Create the api
+2. Connect to the database
+3. Create the front end 
+4. Turn it into a microservice
