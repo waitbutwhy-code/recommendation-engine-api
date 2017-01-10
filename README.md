@@ -3,6 +3,8 @@ generate recommendations for brands
 
 Design :
 
+ J(A,B) = |A∩B| / |A∪B|
+
 1. Using collaborative filter to recommend promotions
 2. Data will be stored in key values pairs (firebase / redis)
 3. Have a rater classes that adds rating (likes and dislikes)
@@ -16,3 +18,8 @@ Plan:
 2. Connect to the database
 3. Create the front end 
 4. Turn it into a microservice
+
+
+Resources:
+1. Windows alt codes: http://technoworld007.blogspot.co.uk/2013/06/windows-alt-key-numeric-codes-of-all.html
+2. Algo based on: https://www.toptal.com/algorithms/predicting-likes-inside-a-simple-recommendation-engine
