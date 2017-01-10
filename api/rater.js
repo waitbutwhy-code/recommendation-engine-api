@@ -8,23 +8,23 @@ class Rater {
     }
 
 /*
-Add function to add a user
+Add function to add user and item
 1. check if user exists (find user in db)
 2. if user exist , do not do anything
 3. if user does not exist , add user
 4. then calculate similar users and suggestions
 */
-    add(user){
+    add(user, item){
         return new Promise((resolve, reject) => {
-            this.db.find({user}, (err, res) => {
+            this.db.find({user, item}, (err, res) => {
                 if (err) {
-                    reject('Error finding user in db: ',err);
+                    reject('Error finding user / item in db: ',err);
                 }
                 if (res.length > 0) {
-                    resolve('User already exists');
+                    resolve('User & item already exists');
                 }
 
-                this.db.insert({user}, (err, res) => {
+                this.db.insert({user, item}, (err, res) => {
                     if (err) {
                         reject('Error inserting user in db: ',err);
                     }
@@ -32,10 +32,18 @@ Add function to add a user
                     // Update similar users here 
                     // Update suggestions here
                     
-                    resolve('User added');
+                    resolve('User & item added');
                 })
             })
         })
+    }
+/*
+Remove user items
+*/
+    remove(user, item){
+        // return new Promise((resolve, reject) => {
+
+        // })
     }
 }
 
