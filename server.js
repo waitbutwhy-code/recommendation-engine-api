@@ -12,3 +12,12 @@ const query = new Query();
 // testing query
 
 console.log(query);
+
+query.addGender('male')
+    .then((res) => {
+        console.log(res);
+        return query.addGender('male');
+    })
+    .then((res) => {
+        console.log(res);
+    });
