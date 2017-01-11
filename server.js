@@ -1,7 +1,7 @@
 const {Rater} = require('./lib/rater.js');
 const {Query} = require('./lib/query.js');
 
-const likes = new Rater('likes');
+// const likes = new Rater('likes');
 const query = new Query();
 
 // testing likes
@@ -11,7 +11,7 @@ const query = new Query();
 
 // testing query
 
-console.log(query);
+// console.log(query);
 
 query.addGender('male')
     .then((res) => {
