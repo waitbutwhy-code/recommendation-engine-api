@@ -13,7 +13,7 @@ Similarity indices:
 5. Have a suggestions class that suggests promotions
 6. Expose functions to a front end interface 
 
-User will put in a few demographic details (age, location) => we take a subset of our users that fit that demographic 
+User will put in a query with details (age, location, gender ) => we take a subset of our users that fit that demographic 
 generate suggestions based on top 4.
 User can then selct if they like or dislike , similarities and suggestions are then tuned (using similarity algorithm)
 
