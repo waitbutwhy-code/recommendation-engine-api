@@ -13,11 +13,25 @@ const query = new Query();
 
 // console.log(query);
 
-query.addGender('male')
-    .then((res) => {
-        console.log(res);
-        return query.addGender('male');
-    })
-    .then((res) => {
-        console.log(res);
-    });
+// query.addGender('male')
+//     .then((res) => {
+//         console.log(res);
+//         return query.addGender('male');
+//     })
+//     .then((res) => {
+//         console.log(res);
+//     });
+
+Promise.all([
+    query.addAge(16),
+    query.addGender('female'),
+    query.addLocation('USA'),
+    query.addSchedule('summer'),
+])
+.then((res) => {
+    console.log('res is ',res)  
+    query.updateDb();  
+})
+.catch((err) => {
+    console.log('err is ',err);
+});
