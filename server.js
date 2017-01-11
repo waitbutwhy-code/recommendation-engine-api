@@ -1,7 +1,14 @@
 const {Rater} = require('./lib/rater.js');
+const {Query} = require('./lib/query.js');
 
 const likes = new Rater('likes');
+const query = new Query();
 
-likes.add('mo', 1).then((res) => {
-    console.log(res)
-}); 
+// testing likes
+// likes.add('mo', 1).then((res) => {
+//     console.log(res)
+// }); 
+
+// testing query
+
+console.log(query);
