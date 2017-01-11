@@ -1,4 +1,4 @@
-const {Rater} = require('./api/rater.js');
+const {Rater} = require('./lib/rater.js');
 
 const likes = new Rater('likes');
 

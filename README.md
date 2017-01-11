@@ -19,7 +19,7 @@ User can then selct if they like or dislike , similarities and suggestions are t
 
 Plan:
 
-1. Create the api
+1. Rater, similar , suggestions and user class (user contains age, gender , location)
 2. Convert database from bourne to production database (as to build offline)
 3. Create the front end 
 4. Turn it into a microservice
