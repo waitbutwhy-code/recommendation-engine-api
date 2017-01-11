@@ -1,35 +1,36 @@
 const {Rater} = require('./lib/rater.js');
 const {Query} = require('./lib/query.js');
+const {Similars} = require('./lib/simiars.js');
 
 const likes = new Rater('likes');
 const query = new Query();
-
+const simiars = new Similars();
 // testing likes
 
-Promise.all([
-    likes.add('mo', 1),
-    likes.add('mo', 2),
-    likes.add('mo', 3),
-    likes.add('jo', 4),
-    likes.add('jo', 5),
-    likes.add('ho', 1),
-    likes.add('ho', 2),
-    likes.add('mo', 5),
-    likes.add('ho', 5),
-]).then((res) => {
-    console.log(res);
-    return likes.remove('mo', 2)
-}).then((res) => {
-    console.log(res);
-    return likes.usersByItem(5);
-}).then((res) => {
-    console.log(res);    
-    return likes.itemsByUser('mo');
-}).then((res) => {
-    console.log(res);    
-}).catch((err) => {
-    console.log(err);    
-});
+// Promise.all([
+//     likes.add('mo', 1),
+//     likes.add('mo', 2),
+//     likes.add('mo', 3),
+//     likes.add('jo', 4),
+//     likes.add('jo', 5),
+//     likes.add('ho', 1),
+//     likes.add('ho', 2),
+//     likes.add('mo', 5),
+//     likes.add('ho', 5),
+// ]).then((res) => {
+//     console.log(res);
+//     return likes.remove('mo', 2)
+// }).then((res) => {
+//     console.log(res);
+//     return likes.usersByItem(5);
+// }).then((res) => {
+//     console.log(res);    
+//     return likes.itemsByUser('mo');
+// }).then((res) => {
+//     console.log(res);    
+// }).catch((err) => {
+//     console.log(err);    
+// });
 
 
 // testing query
