@@ -5,6 +5,9 @@ Design :
 
 Similarity indices:
  J(A,B) = |A∩B| / |A∪B|
+ or in other words :
+ S(A,B) = |ALikes ∩ BLikes| + |ADislikes ∩ BDislikes| - |ALikes ∩ BDislikes| - |ADislikes ∩ BLikes|  / |ALikes ∪ BLikes ∪ ADislikes ∪ BDislikes|
+
 
 1. Using collaborative filter to recommend promotions
 2. Data will be stored in key values pairs (redis)
