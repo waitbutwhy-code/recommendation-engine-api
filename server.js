@@ -37,7 +37,7 @@ Promise.all([
     console.log(res);
     return similars.update('mo');    
 }).then((res) => {
-    
+    console.log('similarities are ', res);
 }).catch((err) => {
     console.log(err);    
 });
