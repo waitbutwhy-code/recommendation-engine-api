@@ -1,11 +1,13 @@
 const {Rater} = require('./lib/rater.js');
 const {Query} = require('./lib/query.js');
 const {Similars} = require('./lib/similars.js');
+const {Suggestions} = require('./lib/suggestions.js');
 
 const likes = new Rater('likes');
 const dislikes = new Rater('dislikes');
 const query = new Query();
 const similars = new Similars();
+const suggestions = new Suggestions();
 // testing likes
 
 Promise.all([
@@ -33,12 +35,21 @@ Promise.all([
 }).then((res) => {
     console.log(res);    
     return likes.itemsByUser('mo');
-}).then((res) => {
+})
+.then((res) => {
     console.log(res);
+    return similars.byUser('mo');    
+})
+.then((res) => {
+    console.log('byUser is ', res);
     return similars.update('mo');    
 }).then((res) => {
-    console.log('similarities are ', res);
-}).catch((err) => {
+    // console.log('similarities are ', res);
+    return suggestions.update('mo');
+}).then((res) => {
+    console.log('suggestions update is ', res);
+})
+.catch((err) => {
     console.log(err);    
 });
 
