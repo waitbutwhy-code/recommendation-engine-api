@@ -1,11 +1,11 @@
 const {Rater} = require('./lib/rater.js');
 const {Query} = require('./lib/query.js');
-const {Similars} = require('./lib/simiars.js');
+const {Similars} = require('./lib/similars.js');
 
 const likes = new Rater('likes');
 const dislikes = new Rater('dislikes');
 const query = new Query();
-const simiars = new Similars();
+const similars = new Similars();
 // testing likes
 
 Promise.all([
@@ -35,7 +35,7 @@ Promise.all([
     return likes.itemsByUser('mo');
 }).then((res) => {
     console.log(res);
-    return simiars.update('mo');    
+    return similars.update('mo');    
 }).then((res) => {
     
 }).catch((err) => {
