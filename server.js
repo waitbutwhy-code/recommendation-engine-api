@@ -1,13 +1,15 @@
-const {Rater} = require('./lib/rater.js');
-const {Query} = require('./lib/query.js');
-const {Similars} = require('./lib/similars.js');
-const {Suggestions} = require('./lib/suggestions.js');
+// const {Rater} = require('./lib/rater.js');
+// const {Query} = require('./lib/query.js');
+// const {Similars} = require('./lib/similars.js');
+// const {Suggestions} = require('./lib/suggestions.js');
+const {Engine} = require('./lib/engine.js');
 
-const likes = new Rater('likes');
-const dislikes = new Rater('dislikes');
-const query = new Query();
-const similars = new Similars();
-const suggestions = new Suggestions();
+const e = new Engine;
+const likes = e.likes;
+const dislikes = e.dislikes;
+// const query = new Query();
+// const similars = e.similars;
+// const suggestions = e.suggestions;
 // testing likes
 
 Promise.all([
@@ -26,29 +28,30 @@ Promise.all([
     dislikes.add('ho', 11),
     dislikes.add('ho', 9),
     dislikes.add('jo', 9),
-]).then((res) => {
-    console.log(res);
-    return likes.remove('mo', 2)
-}).then((res) => {
-    console.log(res);
-    return likes.usersByItem(5);
-}).then((res) => {
-    console.log(res);    
-    return likes.itemsByUser('mo');
-})
-.then((res) => {
-    console.log(res);
-    return similars.byUser('mo');    
-})
-.then((res) => {
-    console.log('byUser is ', res);
-    return similars.update('mo');    
-}).then((res) => {
-    // console.log('similarities are ', res);
-    return suggestions.update('mo');
-}).then((res) => {
-    console.log('suggestions update is ', res);
-})
+])
+// .then((res) => {
+//     console.log(res);
+//     return likes.remove('mo', 2)
+// }).then((res) => {
+//     console.log(res);
+//     return likes.usersByItem(5);
+// }).then((res) => {
+//     console.log(res);    
+//     return likes.itemsByUser('mo');
+// })
+// .then((res) => {
+//     console.log(res);
+//     return similars.byUser('mo');    
+// })
+// .then((res) => {
+//     console.log('byUser is ', res);
+//     return similars.update('mo');    
+// }).then((res) => {
+//     // console.log('similarities are ', res);
+//     return suggestions.update('mo');
+// }).then((res) => {
+//     console.log('suggestions update is ', res);
+// })
 .catch((err) => {
     console.log(err);    
 });
