@@ -8,7 +8,7 @@ const e = new Engine;
 const likes = e.likes;
 const dislikes = e.dislikes;
 // const query = new Query();
-// const similars = e.similars;
+const similars = e.similars;
 // const suggestions = e.suggestions;
 // testing likes
 
@@ -29,24 +29,25 @@ Promise.all([
     dislikes.add('ho', 9),
     dislikes.add('jo', 9),
 ])
+.then((res) => {
+    console.log(res);
+    return likes.remove('mo', 2)
+}).then((res) => {
+    console.log(res);
+    return likes.usersByItem(5);
+}).then((res) => {
+    console.log(res);    
+    return likes.itemsByUser('mo');
+})
+.then((res) => {
+    console.log(res);
+    return similars.byUser('mo');    
+})
+.then((res) => {
+    console.log('byUser is ', res);
+    return similars.update('mo');    
+})
 // .then((res) => {
-//     console.log(res);
-//     return likes.remove('mo', 2)
-// }).then((res) => {
-//     console.log(res);
-//     return likes.usersByItem(5);
-// }).then((res) => {
-//     console.log(res);    
-//     return likes.itemsByUser('mo');
-// })
-// .then((res) => {
-//     console.log(res);
-//     return similars.byUser('mo');    
-// })
-// .then((res) => {
-//     console.log('byUser is ', res);
-//     return similars.update('mo');    
-// }).then((res) => {
 //     // console.log('similarities are ', res);
 //     return suggestions.update('mo');
 // }).then((res) => {
