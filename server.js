@@ -9,7 +9,7 @@ const likes = e.likes;
 const dislikes = e.dislikes;
 // const query = new Query();
 const similars = e.similars;
-// const suggestions = e.suggestions;
+const suggestions = e.suggestions;
 // testing likes
 
 Promise.all([
@@ -47,10 +47,11 @@ Promise.all([
     console.log('byUser is ', res);
     return similars.update('mo');    
 })
+.then((res) => {
+    // console.log('similarities are ', res);
+    return suggestions.update('mo');
+})
 // .then((res) => {
-//     // console.log('similarities are ', res);
-//     return suggestions.update('mo');
-// }).then((res) => {
 //     console.log('suggestions update is ', res);
 // })
 .catch((err) => {
