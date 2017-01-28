@@ -1,62 +1,59 @@
-// const {Rater} = require('./lib/rater.js');
-// const {Query} = require('./lib/query.js');
-// const {Similars} = require('./lib/similars.js');
-// const {Suggestions} = require('./lib/suggestions.js');
+const express = require('express');
+
 const {Engine} = require('./lib/engine.js');
 
+const  app = express();
 const e = new Engine;
 const likes = e.likes;
 const dislikes = e.dislikes;
-// const query = new Query();
 const similars = e.similars;
 const suggestions = e.suggestions;
-// testing likes
 
-Promise.all([
-    likes.add('mo', 1),
-    likes.add('mo', 2),
-    likes.add('mo', 3),
-    likes.add('jo', 4),
-    likes.add('jo', 5),
-    likes.add('ho', 1),
-    likes.add('ho', 2),
-    likes.add('mo', 5),
-    likes.add('ho', 5),
-    dislikes.add('mo', 8),
-    dislikes.add('mo', 11),
-    dislikes.add('mo', 12),
-    dislikes.add('ho', 11),
-    dislikes.add('ho', 9),
-    dislikes.add('jo', 9),
-])
-.then((res) => {
-    console.log(res);
-    return likes.remove('mo', 2)
-}).then((res) => {
-    console.log(res);
-    return likes.usersByItem(5);
-}).then((res) => {
-    console.log(res);    
-    return likes.itemsByUser('mo');
-})
-.then((res) => {
-    console.log(res);
-    return similars.byUser('mo');    
-})
-.then((res) => {
-    console.log('byUser is ', res);
-    return similars.update('mo');    
-})
-.then((res) => {
-    // console.log('similarities are ', res);
-    return suggestions.update('mo');
-})
+// Promise.all([
+//     likes.add('mo', 1),
+//     likes.add('mo', 2),
+//     likes.add('mo', 3),
+//     likes.add('jo', 4),
+//     likes.add('jo', 5),
+//     likes.add('ho', 1),
+//     likes.add('ho', 2),
+//     likes.add('mo', 5),
+//     likes.add('ho', 5),
+//     dislikes.add('mo', 8),
+//     dislikes.add('mo', 11),
+//     dislikes.add('mo', 12),
+//     dislikes.add('ho', 11),
+//     dislikes.add('ho', 9),
+//     dislikes.add('jo', 9),
+// ])
 // .then((res) => {
-//     console.log('suggestions update is ', res);
+//     console.log(res);
+//     return likes.remove('mo', 2)
+// }).then((res) => {
+//     console.log(res);
+//     return likes.usersByItem(5);
+// }).then((res) => {
+//     console.log(res);    
+//     return likes.itemsByUser('mo');
 // })
-.catch((err) => {
-    console.log(err);    
-});
+// .then((res) => {
+//     console.log(res);
+//     return similars.byUser('mo');    
+// })
+// .then((res) => {
+//     console.log('byUser is ', res);
+//     return similars.update('mo');    
+// })
+// .then((res) => {
+//     // console.log('similarities are ', res);
+//     return suggestions.update('mo');
+// })
+// // .then((res) => {
+// //     console.log('suggestions update is ', res);
+// // })
+// .catch((err) => {
+//     console.log(err);    
+// });
 
 
 // testing query
