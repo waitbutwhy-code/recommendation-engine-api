@@ -30,6 +30,26 @@ app.put('/likes/:id' , (req, res)=> {
 
 })
 
+app.put('/dislikes/:id', (req, res) => {
+    const userId = parseInt(req.params.id, 10);
+    const body = _.pick(req.body, "name", "completed", "movieId");
+
+    dislikes.add(userId, body.movieId)
+        .then((res) => {
+            res.status(400).send();
+        })
+        .catch((e) => {
+            res.status(500).json(e);
+        })
+})
+
+app.get('/suggestions/:id', (req, res) => {
+    const userId = parseInt(req.params.id, 10);
+    const body = _.pick(req.body, "name", "completed", "movieId");
+
+    suggestions.byUser(userId);  
+})
+
 app.listen(PORT, () => {
     console.log('Recommendation api is listenting on ', PORT);
 })
