@@ -16,9 +16,18 @@ app.get('/', (req, res) => {
     res.send('Recommendation api');
 });
 
-app.put('/users/:id' , (req, res)=> {
+app.put('/likes/:id' , (req, res)=> {
     const userId = parseInt(req.params.id, 10);
-    const body = _.pick(req.body, "name", "completed");
+    const body = _.pick(req.body, "name", "completed", "movieId");
+
+    likes.add(userId, body.movieId)
+        .then((res) => {
+            res.status(400).send();
+        })
+        .catch((e) => {
+            res.status(500).json(e);
+        })
+
 })
 
 app.listen(PORT, () => {
