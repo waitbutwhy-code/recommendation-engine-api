@@ -1,8 +1,7 @@
 const express = require('express');
-
 const {Engine} = require('./lib/engine.js');
 
-const app = express();
+
 const e = new Engine;
 const likes = e.likes;
 const dislikes = e.dislikes;
@@ -10,10 +9,16 @@ const similars = e.similars;
 const suggestions = e.suggestions;
 
 const PORT = process.env.PORT || 3003;
+const app = express();
+
 
 app.get('/', (req, res) => {
     res.send('Recommendation api');
 });
+
+app.listen(PORT, () => {
+    console.log('Recommendation api is listenting on ', PORT);
+})
 
 // Promise.all([
 //     likes.add('mo', 1),
