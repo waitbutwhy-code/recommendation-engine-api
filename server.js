@@ -16,6 +16,11 @@ app.get('/', (req, res) => {
     res.send('Recommendation api');
 });
 
+app.put('/users/:id' , (req, res)=> {
+    const userId = parseInt(req.params.id, 10);
+    const body = _.pick(req.body, "name", "completed");
+})
+
 app.listen(PORT, () => {
     console.log('Recommendation api is listenting on ', PORT);
 })
