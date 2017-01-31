@@ -22,15 +22,20 @@ app.post('/likes' , (req, res)=> {
     // const userId = parseInt(req.params.id, 10);
     // const body = _.pick(req.body, "name", "completed", "movieId");
 
-    // likes.add(userId, body.movieId)
-    //     .then((res) => {
-    //         res.status(400).send();
-    //     })
-    //     .catch((e) => {
-    //         res.status(500).json(e);
-    //     })
+    const userId = req.body.userId;
+    const movieId = req.body.movieId;
 
-    console.log('reqest body is ', req.body);
+    console.log('reqest userId is ', userId);
+    console.log('reqest movieId is ', movieId);
+
+    likes.add(userId, movieId)
+        .then((res) => {
+            res.status(400).send();
+        })
+    .catch((e) => {
+        res.status(500).json(e);
+    })
+
 })
 
 // app.put('/dislikes/:id', (req, res) => {
