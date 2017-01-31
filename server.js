@@ -2,7 +2,6 @@ const express = require('express');
 const {Engine} = require('./lib/engine.js');
 var bodyParser = require('body-parser');
 
-
 const e = new Engine;
 const likes = e.likes;
 const dislikes = e.dislikes;
@@ -19,45 +18,45 @@ app.get('/', (req, res) => {
 });
 
 app.post('/likes' , (req, res)=> {
-    // const userId = parseInt(req.params.id, 10);
-    // const body = _.pick(req.body, "name", "completed", "movieId");
-
     const userId = req.body.userId;
     const movieId = req.body.movieId;
 
     console.log('reqest userId is ', userId);
     console.log('reqest movieId is ', movieId);
 
-    likes.add(userId, movieId)
-        .then((res) => {
-            res.status(400).send();
-        })
-    .catch((e) => {
-        res.status(500).json(e);
+    likes.add(userId, movieId).then((result) => {
+            return res.status(200).send();
+    }).catch((e) => {
+        return res.status(500).json(e);
     })
 
 })
 
-// app.put('/dislikes/:id', (req, res) => {
-//     const userId = parseInt(req.params.id, 10);
-//     const body = _.pick(req.body, "name", "completed", "movieId");
 
-//     dislikes.add(userId, body.movieId)
-//         .then((res) => {
-//             res.status(400).send();
-//         })
-//         .catch((e) => {
-//             res.status(500).json(e);
-//         })
-// })
+app.post('/dislikes' , (req, res)=> {
+    const userId = req.body.userId;
+    const movieId = req.body.movieId;
 
-// app.get('/suggestions/:id', (req, res) => {
-//     const userId = parseInt(req.params.id, 10);
-//     const body = _.pick(req.body, "name", "completed", "movieId");
+    console.log('reqest userId is ', userId);
+    console.log('reqest movieId is ', movieId);
 
-//     suggestions.byUser(userId);  
-// })
+    dislikes.add(userId, movieId).then((result) => {
+            return res.status(200).send();
+    }).catch((e) => {
+        return res.status(500).json(e);
+    })
 
+})
+
+
+app.get('/suggestions', (req, res) => {
+    const userId = req.body.userId;
+    suggestions.forUser(userId).then((result) => {
+        return res.status(200).send(result);
+    }).catch((e) => {
+        return res.status(500).json(e);        
+    });
+})
 app.listen(PORT, () => {
     console.log('Recommendation api is listenting on ', PORT);
 })
