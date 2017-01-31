@@ -1,5 +1,6 @@
 const express = require('express');
 const {Engine} = require('./lib/engine.js');
+var bodyParser = require('body-parser');
 
 
 const e = new Engine;
@@ -11,44 +12,46 @@ const suggestions = e.suggestions;
 const PORT = process.env.PORT || 3003;
 const app = express();
 
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     res.send('Recommendation api');
 });
 
-app.put('/likes/:id' , (req, res)=> {
-    const userId = parseInt(req.params.id, 10);
-    const body = _.pick(req.body, "name", "completed", "movieId");
+app.post('/likes' , (req, res)=> {
+    // const userId = parseInt(req.params.id, 10);
+    // const body = _.pick(req.body, "name", "completed", "movieId");
 
-    likes.add(userId, body.movieId)
-        .then((res) => {
-            res.status(400).send();
-        })
-        .catch((e) => {
-            res.status(500).json(e);
-        })
+    // likes.add(userId, body.movieId)
+    //     .then((res) => {
+    //         res.status(400).send();
+    //     })
+    //     .catch((e) => {
+    //         res.status(500).json(e);
+    //     })
 
+    console.log('reqest body is ', req.body);
 })
 
-app.put('/dislikes/:id', (req, res) => {
-    const userId = parseInt(req.params.id, 10);
-    const body = _.pick(req.body, "name", "completed", "movieId");
+// app.put('/dislikes/:id', (req, res) => {
+//     const userId = parseInt(req.params.id, 10);
+//     const body = _.pick(req.body, "name", "completed", "movieId");
 
-    dislikes.add(userId, body.movieId)
-        .then((res) => {
-            res.status(400).send();
-        })
-        .catch((e) => {
-            res.status(500).json(e);
-        })
-})
+//     dislikes.add(userId, body.movieId)
+//         .then((res) => {
+//             res.status(400).send();
+//         })
+//         .catch((e) => {
+//             res.status(500).json(e);
+//         })
+// })
 
-app.get('/suggestions/:id', (req, res) => {
-    const userId = parseInt(req.params.id, 10);
-    const body = _.pick(req.body, "name", "completed", "movieId");
+// app.get('/suggestions/:id', (req, res) => {
+//     const userId = parseInt(req.params.id, 10);
+//     const body = _.pick(req.body, "name", "completed", "movieId");
 
-    suggestions.byUser(userId);  
-})
+//     suggestions.byUser(userId);  
+// })
 
 app.listen(PORT, () => {
     console.log('Recommendation api is listenting on ', PORT);
