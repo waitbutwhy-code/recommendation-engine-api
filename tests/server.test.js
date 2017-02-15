@@ -27,4 +27,18 @@ describe('POST /likes', () => {
                 done();
             });
     });
+
+    it('should not create like with invalid body data', (done) => {
+        request(app)
+            .post('/likes')
+            .send({})
+            .expect(400)
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+
+                done();
+            })
+    });
 });

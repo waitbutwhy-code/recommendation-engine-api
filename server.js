@@ -23,13 +23,17 @@ app.post('/likes' , (req, res)=> {
     const userId = req.body.userId;
     const itemId = req.body.itemId;
 
+    if ( userId === undefined || itemId === undefined) {
+        return res.status(400).send();
+    }
+
     console.log('reqest userId is ', userId);
     console.log('reqest itemId is ', itemId);
 
     likes.add(userId, itemId).then((result) => {
             return res.status(200).send(result);
     }).catch((e) => {
-        return res.status(500).json(e);
+        return res.status(500).send(e);
     })
 
 })
