@@ -21,12 +21,12 @@ app.get('/', (req, res) => {
 
 app.post('/likes' , (req, res)=> {
     const userId = req.body.userId;
-    const movieId = req.body.movieId;
+    const itemId = req.body.itemId;
 
     console.log('reqest userId is ', userId);
-    console.log('reqest movieId is ', movieId);
+    console.log('reqest itemId is ', itemId);
 
-    likes.add(userId, movieId).then((result) => {
+    likes.add(userId, itemId).then((result) => {
             return res.status(200).send(result);
     }).catch((e) => {
         return res.status(500).json(e);
@@ -62,7 +62,10 @@ app.get('/suggestions', (req, res) => {
 })
 app.listen(PORT, () => {
     console.log('Recommendation api is listenting on ', PORT);
-})
+});
+
+// for testing
+module.exports = {app};
 
 // Promise.all([
 //     likes.add('mo', 1),
