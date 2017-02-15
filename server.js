@@ -1,6 +1,8 @@
+const _ = require('lodash');
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const {Engine} = require('./lib/engine.js');
-var bodyParser = require('body-parser');
 
 const e = new Engine;
 const likes = e.likes;
@@ -8,7 +10,7 @@ const dislikes = e.dislikes;
 const similars = e.similars;
 const suggestions = e.suggestions;
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(bodyParser.json());
@@ -25,7 +27,7 @@ app.post('/likes' , (req, res)=> {
     console.log('reqest movieId is ', movieId);
 
     likes.add(userId, movieId).then((result) => {
-            return res.status(200).send();
+            return res.status(200).send(result);
     }).catch((e) => {
         return res.status(500).json(e);
     })
@@ -41,7 +43,7 @@ app.post('/dislikes' , (req, res)=> {
     console.log('reqest movieId is ', movieId);
 
     dislikes.add(userId, movieId).then((result) => {
-            return res.status(200).send();
+            return res.status(200).send(result);
     }).catch((e) => {
         return res.status(500).json(e);
     })
@@ -49,6 +51,7 @@ app.post('/dislikes' , (req, res)=> {
 })
 
 
+// currently isnt working, needs some adjustments ()
 app.get('/suggestions', (req, res) => {
     const userId = req.body.userId;
     suggestions.forUser(userId).then((result) => {
