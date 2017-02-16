@@ -42,6 +42,17 @@ class Suggestions {
         this.db = new Bourne('./db-suggestions.json');
     }
 
+    getAllSuggestions(){
+        return new Promise((resolve, reject) => {
+            this.db.find((err, records) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(records);
+            });
+        })
+    }
+
     getSuggestions(userId, otherUsers ,itemId){
         // 1. get users (likers and dislikers ) from items
         // 2. iterate over users (excluding current user)
@@ -79,7 +90,7 @@ class Suggestions {
 
     forUser(userId){
         return new Promise((resolve, reject) => {
-            this.db.findOne({userId}, (err, {suggestions} = {suggestions: []}) => {
+            this.db.findOne({userId}, (err, suggestions = []) => {
                 if(err){
                     reject(err)
                 }
@@ -136,7 +147,7 @@ class Suggestions {
 
                 return 'Suggestions updated sucessfully';
             });
-            
+
             return suggestions;
         })
     }

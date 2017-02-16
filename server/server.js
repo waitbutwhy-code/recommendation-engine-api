@@ -60,12 +60,20 @@ app.post('/dislikes' , (req, res)=> {
 
 // currently isnt working, needs some adjustments ()
 app.get('/suggestions', (req, res) => {
-    const userId = req.body.userId;
-    suggestions.forUser(userId).then((result) => {
-        return res.send(result);
+
+    suggestions.getAllSuggestions().then((results) => {
+        return res.send(results);
     }).catch((e) => {
-        return res.status(500).json(e);        
+        return res.status(500).json(e);                
     });
+
+    // suggestions for a single user
+    // const userId = req.body.userId;
+    // suggestions.forUser(userId).then((result) => {
+    //     return res.send(result);
+    // }).catch((e) => {
+    //     return res.status(500).json(e);        
+    // });
 })
 
 app.listen(PORT, () => {
