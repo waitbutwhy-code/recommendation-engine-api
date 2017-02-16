@@ -128,6 +128,15 @@ class Suggestions {
             return Promise.all(suggestionsArray);
         }).then((suggestions) => {
             console.log('suggestions are ', suggestions);
+
+            this.db.insert({userId, suggestions}, (err, res) => {
+                if (err) {
+                    return ('Error inserting userId in db: ',err);
+                }
+
+                return 'Suggestions updated sucessfully';
+            });
+            
             return suggestions;
         })
     }

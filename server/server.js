@@ -47,8 +47,8 @@ app.post('/dislikes' , (req, res)=> {
         return res.status(400).send();
     }
 
-    console.log('reqest userId is ', userId);
-    console.log('reqest itemId is ', itemId);
+    console.log('dislike reqest userId is ', userId);
+    console.log('dislike reqest itemId is ', itemId);
 
     dislikes.add(userId, itemId).then((result) => {
             return res.status(200).send(result);

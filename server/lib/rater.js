@@ -32,8 +32,12 @@ Add function to add userId and itemId
 
                     // Update similar  here 
                     // Update suggestions here
-                    this.engine.similars.update(userId);
-                    this.engine.suggestions.update(userId);
+                    Promise.all([
+                        this.engine.similars.update(userId),
+                        this.engine.suggestions.update(userId),
+                    ]).catch((e) => {
+                        reject('Error updating suggestion and similarities db: ',err);
+                    })
                     
                     resolve(`${userId} & ${itemId} added`);
                 })
