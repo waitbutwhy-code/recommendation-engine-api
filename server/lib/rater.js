@@ -32,8 +32,8 @@ Add function to add userId and itemId
 
                     // Update similar  here 
                     // Update suggestions here
-                    // this.engine.similars.update(userId);
-                    // this.engine.suggestions.update(userId);
+                    this.engine.similars.update(userId);
+                    this.engine.suggestions.update(userId);
                     
                     resolve(`${userId} & ${itemId} added`);
                 })

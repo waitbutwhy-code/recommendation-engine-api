@@ -41,29 +41,33 @@ app.post('/likes' , (req, res)=> {
 
 app.post('/dislikes' , (req, res)=> {
     const userId = req.body.userId;
-    const movieId = req.body.movieId;
+    const itemId = req.body.itemId;
+
+    if ( userId === undefined || itemId === undefined) {
+        return res.status(400).send();
+    }
 
     console.log('reqest userId is ', userId);
-    console.log('reqest movieId is ', movieId);
+    console.log('reqest itemId is ', itemId);
 
-    dislikes.add(userId, movieId).then((result) => {
+    dislikes.add(userId, itemId).then((result) => {
             return res.status(200).send(result);
     }).catch((e) => {
-        return res.status(500).json(e);
+        return res.status(500).send(e);
     })
 
 })
-
 
 // currently isnt working, needs some adjustments ()
 app.get('/suggestions', (req, res) => {
     const userId = req.body.userId;
     suggestions.forUser(userId).then((result) => {
-        return res.status(200).send(result);
+        return res.send(result);
     }).catch((e) => {
         return res.status(500).json(e);        
     });
 })
+
 app.listen(PORT, () => {
     console.log('Recommendation api is listenting on ', PORT);
 });
@@ -91,7 +95,8 @@ module.exports = {app};
 // .then((res) => {
 //     console.log(res);
 //     return likes.remove('mo', 2)
-// }).then((res) => {
+// })
+// .then((res) => {
 //     console.log(res);
 //     return likes.usersByItem(5);
 // }).then((res) => {
@@ -110,9 +115,9 @@ module.exports = {app};
 //     // console.log('similarities are ', res);
 //     return suggestions.update('mo');
 // })
-// // .then((res) => {
-// //     console.log('suggestions update is ', res);
-// // })
+// .then((res) => {
+//     console.log('suggestions update is ', res);
+// })
 // .catch((err) => {
 //     console.log(err);    
 // });
